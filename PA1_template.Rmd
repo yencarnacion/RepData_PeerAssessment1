@@ -166,9 +166,9 @@ imputedData <- cbind(imputedData, weekdayWeekendFactor=weekdayWeekendFactor)
 ```{r}
 library(lattice) 
 # kernel density plots by factor level 
-stepsPerIntervalWeekdayWeekend <- aggregate(steps ~ interval + weekdayWeekendFactor, data = imputedData, FUN = mean)
+stepsPerIntervalWeekdayWeekend <- aggregate(imputedSteps ~ interval + weekdayWeekendFactor, data = imputedData, FUN = mean)
 
-xyplot(steps~interval|weekdayWeekendFactor, data=stepsPerIntervalWeekdayWeekend, type="l", layout = c(1, 2),
+xyplot(imputedSteps~interval|weekdayWeekendFactor, data=stepsPerIntervalWeekdayWeekend, type="l", layout = c(1, 2),
     main="Average Daily Activity Pattern",
    xlab="5-minute Interval",  ylab = "Number of Steps")
 ```
